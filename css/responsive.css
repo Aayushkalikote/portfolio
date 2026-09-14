@@ -1,0 +1,10 @@
+/* responsive + motion — must load last so these win the cascade */
+/* mobile */
+@media(max-width:720px){
+  :root{--w-side:190px;--w-activity:44px}
+  body.no-side .sidebar{display:none}
+  .md{font-size:13.5px}
+  .avatar{width:100px;height:100px}
+  .panel{height:240px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}

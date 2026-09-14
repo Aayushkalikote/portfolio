@@ -1,0 +1,26 @@
+/* base — reset, design tokens, scrollbars */
+:root{
+  --editor:#1e1e1e; --side:#252526; --activity:#333333; --title:#3c3c3c;
+  --tab-a:#1e1e1e; --tab-i:#2d2d2d; --panel:#181818;
+  --line:#3e3e42; --line2:#2b2b2b;
+  --tx:#cccccc; --tx2:#9d9d9d; --tx3:#6e7681;
+  --acc:#007acc; --acc2:#0e639c; --hover:#2a2d2e; --sel:#04395e;
+  --kw:#569cd6; --str:#ce9178; --fn:#dcdcaa; --num:#b5cea8; --com:#6a9955;
+  --typ:#4ec9b0; --prop:#9cdcfe; --op:#d4d4d4; --pur:#c586c0; --warn:#cca700;
+  --grn:#4ec9b0; --red:#f14c4c; --org:#e2c08d;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --h-title:34px; --h-status:24px; --w-activity:50px; --w-side:250px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--editor);color:var(--tx);font-family:var(--ui);font-size:13px;overflow:hidden;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--sel)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#424242;border-radius:0}
+::-webkit-scrollbar-thumb:hover{background:#4f4f4f}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:#3794ff;text-decoration:none}
+a:hover{text-decoration:underline}

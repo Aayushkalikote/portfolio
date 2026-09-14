@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>aayush-kalikote — Visual Studio Code</title>
+<meta name="description" content="Aayush Kalikote — Software Engineer. PHP, Laravel and full-stack web. Portfolio built as a VS Code workspace.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23007acc'/%3E%3Ctext x='16' y='22' font-size='16' font-family='monospace' font-weight='700' fill='white' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Load order matters: responsive.css last so its overrides win. -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/editor.css">
+<link rel="stylesheet" href="css/terminal.css">
+<link rel="stylesheet" href="css/overlays.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="no-panel">
+
+<!-- boot -->
+<div id="boot"><div class="b">
+  <div class="logo">aayush-kalikote <b>—</b> Visual Studio Code</div>
+  <pre id="bootlog"></pre>
+  <div class="track"><div class="fill" id="bootfill"></div></div>
+</div></div>
+
+<!-- title bar -->
+<div class="titlebar">
+  <div class="lights"><i></i><i></i><i></i></div>
+  <div class="menu">
+    <button data-menu="file">File</button><button data-menu="edit">Edit</button>
+    <button data-menu="view">View</button><button data-menu="go">Go</button>
+    <button data-menu="run">Run</button><button data-menu="help">Help</button>
+  </div>
+  <div class="wintitle">about.md — aayush-kalikote — Visual Studio Code</div>
+</div>
+
+<div class="shell">
+  <!-- activity bar -->
+  <div class="activity">
+    <button class="ic on" data-act="explorer" title="Explorer (Ctrl+Shift+E)" aria-label="Explorer">
+      <svg viewBox="0 0 24 24"><path d="M4 5h6l2 2h8v12H4z"/></svg>
+      <span class="dot" id="actCount">6</span>
+    </button>
+    <button class="ic" data-act="search" title="Search — try the terminal instead" aria-label="Search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+    </button>
+    <button class="ic" data-act="scm" title="Source Control" aria-label="Source control">
+      <svg viewBox="0 0 24 24"><circle cx="7" cy="6" r="2.4"/><circle cx="7" cy="18" r="2.4"/><circle cx="17" cy="12" r="2.4"/><path d="M7 8.4v7.2M9.4 6h3.2a2 2 0 012 2v1.8"/></svg>
+    </button>
+    <button class="ic" data-act="run" title="Run &amp; Debug" aria-label="Run and debug">
+      <svg viewBox="0 0 24 24"><path d="M6 4l13 8-13 8z"/></svg>
+    </button>
+    <button class="ic" data-act="ext" title="Extensions" aria-label="Extensions">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+    </button>
+    <div class="sp"></div>
+    <button class="ic" data-act="account" title="Accounts" aria-label="Accounts">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>
+    </button>
+    <button class="ic" data-act="settings" title="Command Palette (Ctrl+Shift+P)" aria-label="Settings">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 7.5l2 1.2M17.5 15.3l2 1.2M4.5 16.5l2-1.2M17.5 8.7l2-1.2"/></svg>
+    </button>
+  </div>
+
+  <!-- sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-title"><span id="sideTitle">Explorer</span><span style="letter-spacing:0">⋯</span></div>
+    <div class="side-scroll" id="sideScroll"></div>
+  </aside>
+
+  <!-- main -->
+  <main class="main">
+    <div class="tabs" id="tabs"></div>
+    <div class="crumb" id="crumb"></div>
+    <div class="stage">
+      <div class="view" id="view"></div>
+      <div class="minimap" id="minimap"></div>
+    </div>
+    <div class="panel">
+      <div class="ptabs">
+        <button class="on">Terminal</button>
+        <button id="pProblems">Problems <span style="color:var(--tx3)">0</span></button>
+        <button id="pOutput">Output</button>
+        <div class="right">
+          <button id="termClear" title="Clear terminal">⌫</button>
+          <button id="panelClose" title="Close panel (Ctrl+`)">✕</button>
+        </div>
+      </div>
+      <div class="term" id="term" tabindex="-1"></div>
+    </div>
+  </main>
+</div>
+
+<!-- status bar -->
+<div class="status">
+  <button class="s" id="stBranch" title="Checked out branch">⎇ <span class="mono">main</span></button>
+  <button class="s hide-s" title="No problems">⊘ 0 &nbsp;⚠ 0</button>
+  <button class="s" id="stTerm" title="Toggle terminal (Ctrl+`)">▤ Terminal</button>
+  <div class="sp"></div>
+  <button class="s hide-s mono" id="stPos">Ln 1, Col 1</button>
+  <button class="s hide-s">Spaces: 2</button>
+  <button class="s hide-s">UTF-8</button>
+  <button class="s mono" id="stLang">Markdown</button>
+  <button class="s" id="stBell" title="Say hello">🔔</button>
+</div>
+
+<!-- command palette -->
+<div class="pal" id="pal">
+  <div class="scrim" data-close></div>
+  <div class="box">
+    <input id="palIn" placeholder="Type a command or file name…" autocomplete="off" spellcheck="false">
+    <div class="list" id="palList"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
