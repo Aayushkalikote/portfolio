@@ -17,6 +17,26 @@ export function setPanel(on){
 }
 $("#panelClose").addEventListener("click", function(){ setPanel(false); });
 $("#stTerm").addEventListener("click", function(){ setPanel(document.body.classList.contains("no-panel")); });
+// Drag the top edge to resize, like VS Code's panel.
+$("#panelGrip").addEventListener("pointerdown", function(e){
+  e.preventDefault();
+  const panel = e.currentTarget.parentElement, stage = panel.previousElementSibling;
+  const startY = e.clientY, startH = panel.offsetHeight;
+  e.currentTarget.setPointerCapture(e.pointerId);
+  document.body.classList.add("panel-dragging");
+  const move = function(ev){
+    // ponytail: 80px floor for the stage above; swap for a measured min if the editor ever needs more
+    const max = startH + stage.offsetHeight - 80;
+    panel.style.height = Math.max(35, Math.min(max, startH - (ev.clientY - startY))) + "px";
+  };
+  const up = function(){
+    document.body.classList.remove("panel-dragging");
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", up);
+  };
+  window.addEventListener("pointermove", move);
+  window.addEventListener("pointerup", up);
+});
 $("#termClear").addEventListener("click", function(){ clearTerm(); });
 elTerm.addEventListener("mousedown", function(e){
   if (e.target.closest("a")) return;
@@ -34,7 +54,7 @@ function out(html, cls){
 function blank(){ out("&nbsp;"); }
 
 export const PROMPT = '<span class="p1">aayush@portfolio</span><span class="mu">:</span>'
-           + '<span class="p2">~/aayush-kalikote</span> <span class="p3">$</span> ';
+           + '<span class="p2">~/aayush-kalikote</span> <span class="p3">$</span>&nbsp;';
 
 var promptLine = document.createElement("div");
 promptLine.className = "l inline";
@@ -42,6 +62,11 @@ promptLine.innerHTML = PROMPT + '<input class="tin" id="tin" autocomplete="off" 
   + 'autocapitalize="off" aria-label="terminal input"><span class="caret" id="caret"></span>';
 elTerm.appendChild(promptLine);
 inputEl = $("#tin");
+// Input sized to its text (mono → 1ch per char) so the caret sits right after what you type.
+function sizeInput(){ inputEl.style.width = (inputEl.value.length + 1) + "ch"; }
+inputEl.addEventListener("input", sizeInput);
+inputEl.addEventListener("keyup", sizeInput);  // history/tab-complete set .value without firing input
+sizeInput();
 
 function clearTerm(){
   Array.prototype.slice.call(elTerm.querySelectorAll(".l")).forEach(function(n){
@@ -213,7 +238,7 @@ export const CMDS = {
     blank();
     out('<span class="mu">&#9675;</span> <span class="cmd">BSc.CSIT</span> <span class="mu">&mdash; Texas International College</span>  <span class="p3">2021 - 2025</span>');
     blank();
-    out('<span class="mu">Raw: </span><a href="#" data-open="experience.json">open experience.json &rarr;</a>');
+    out('<span class="mu">Raw: </span><a href="#" data-open="experience.md">open experience.md &rarr;</a>');
     blank();
   },
 
@@ -230,7 +255,7 @@ export const CMDS = {
     blank();
     out('<span class="mu">○</span> <span class="cmd">BSc.CSIT</span> <span class="mu">— Bachelor in Computer Science &amp; Information Technology</span>  <span class="p3">2020 - 2024</span>');
     blank();
-    out('<span class="mu">Raw: </span><a href="#" data-open="experience.json">open experience.json →</a>');
+    out('<span class="mu">Raw: </span><a href="#" data-open="experience.md">open experience.md →</a>');
     blank();
   },
 
@@ -306,23 +331,23 @@ export const CMDS = {
     var q = (args.join(" ") || "").toLowerCase();
     if (!q) { out('<span class="er">usage: grep &lt;term&gt;</span>'); return; }
     var index = {
-      php: "skills.js - primary language, 3+ years in production",
-      laravel: "skills.js - primary application framework; services, queues, Eloquent",
+      php: "skills.md - primary language, 3+ years in production",
+      laravel: "skills.md - primary application framework; services, queues, Eloquent",
       wordpress: "projects/ - plugin architecture for WP Travel Engine",
-      vue: "skills.js - Vue.js on the front end",
-      react: "skills.js - React admin interfaces",
-      django: "skills.js - Python/Django experience",
-      api: "skills.js - REST design, schema validation, auth",
-      rest: "skills.js - REST design, schema validation, auth",
-      ai: "projects/ - Altus AI, solo build; skills.js - LLM integration",
+      vue: "skills.md - Vue.js on the front end",
+      react: "skills.md - React admin interfaces",
+      django: "skills.md - Python/Django experience",
+      api: "skills.md - REST design, schema validation, auth",
+      rest: "skills.md - REST design, schema validation, auth",
+      ai: "projects/ - Altus AI, solo build; skills.md - LLM integration",
       altus: "projects/ - Altus AI, solo design and build",
-      mysql: "skills.js - schema design and query performance",
+      mysql: "skills.md - schema design and query performance",
       payment: "projects/ - gateway integrations, checkout reliability",
-      codewing: "experience.json - PHP Developer, March 2024 to present",
-      tekgro: "experience.json - Intern, July 2023 to July 2024",
-      education: "experience.json - BSc.CSIT, Texas International College, 2021-2025",
-      skills: "skills.js - full stack listing",
-      contact: "contact.php - " + ME.email
+      codewing: "experience.md - PHP Developer, March 2024 to present",
+      tekgro: "experience.md - Intern, July 2023 to July 2024",
+      education: "experience.md - BSc.CSIT, Texas International College, 2021-2025",
+      skills: "skills.md - full stack listing",
+      contact: "contact.md - " + ME.email
     };
     var hits = Object.keys(index).filter(function(k){ return k.indexOf(q) > -1 || q.indexOf(k) > -1; });
     if (!hits.length) { out('<span class="mu">no matches for </span><span class="hl">' + esc(q) + "</span>"); return; }
@@ -357,11 +382,10 @@ export const CMDS = {
       '<span class="hl">Coffee</span>:    <span class="ok">████████░░</span> 80%'
     ];
     blank();
-    var n = Math.max(art.length, info.length);
-    for (var i = 0; i < n; i++) {
-      var a = art[i] || "                 ";
-      out(a + "&nbsp;&nbsp;&nbsp;&nbsp;" + (info[i] || ""));
-    }
+    // Two columns instead of space-padding — the ASCII art lines are not all the same width.
+    out('<div class="nf"><div class="nfcol">' + art.map(function(l){ return "<div>" + l + "</div>"; }).join("")
+      + '</div><div class="nfcol">' + info.map(function(l){ return "<div>" + l + "</div>"; }).join("")
+      + '</div></div>');
     blank();
   },
 

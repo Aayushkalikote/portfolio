@@ -5,7 +5,7 @@ import { ME } from "./profile.js";
 import { FILES } from "./files.js";
 import { openFile } from "./editor.js";
 import { setPanel, pushCmd } from "./terminal.js";
-import { cycleAccent } from "./theme.js";
+import { cycleAccent, toggleTheme } from "./theme.js";
 import { toast } from "./toast.js";
 
 const PAL_ITEMS = Object.keys(FILES).map(function(f){
@@ -17,6 +17,7 @@ const PAL_ITEMS = Object.keys(FILES).map(function(f){
   { label: "Terminal: Run 'projects'", run: function(){ setPanel(true); pushCmd("projects"); } },
   { label: "Terminal: Run 'neofetch'", run: function(){ setPanel(true); pushCmd("neofetch"); } },
   { label: "Terminal: Run 'contact'", run: function(){ setPanel(true); pushCmd("contact"); } },
+  { label: "Preferences: Toggle Light/Dark Theme", run: function(){ toggleTheme(); document.dispatchEvent(new Event("themechange")); } },
   { label: "Preferences: Cycle Accent Color", run: function(){ cycleAccent(); } },
   { label: "Go to: Email " + ME.email, run: function(){ location.href = "mailto:" + ME.email; } },
   { label: "Go to: LinkedIn", run: function(){ if (ME.linkedin.indexOf("_HERE") < 0) window.open(ME.linkedin, "_blank"); else toast("LinkedIn not set", "Paste your profile URL and I'll wire it up."); } },

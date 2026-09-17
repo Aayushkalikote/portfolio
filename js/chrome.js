@@ -9,7 +9,7 @@ import { toast } from "./toast.js";
 
 addEventListener("keydown", function(e){
   var mod = e.ctrlKey || e.metaKey;
-  if (mod && e.shiftKey && e.key.toLowerCase() === "p") { e.preventDefault(); toggleCommandPalette(); return; }
+  if (mod && e.key.toLowerCase() === "p") { e.preventDefault(); toggleCommandPalette(); return; }
   if (mod && (e.key === "`" || e.code === "Backquote")) { e.preventDefault(); setPanel(document.body.classList.contains("no-panel")); return; }
   if (mod && e.key.toLowerCase() === "b") { e.preventDefault(); document.body.classList.toggle("no-side"); return; }
   if (mod && e.key.toLowerCase() === "w") { e.preventDefault(); closeActiveTab(); return; }

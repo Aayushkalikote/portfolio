@@ -4,6 +4,21 @@ import { ME } from "./profile.js";
 import { renderSide } from "./editor.js";
 import { setPanel } from "./terminal.js";
 import { togglePal } from "./palette.js";
+import { toggleTheme, currentTheme } from "./theme.js";
+
+const ICON_SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M3.5 12H6M18 12h2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M5.6 18.4l1.7-1.7M16.7 7.3l1.7-1.7"/></svg>';
+const ICON_MOON = '<svg viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 019.8 4 8.2 8.2 0 1020 14.2z"/></svg>';
+
+/** Moon while dark, sun while light. */
+function paintThemeIcon(){
+  var btn = document.querySelector('.activity .ic[data-act="theme"]');
+  if (!btn) return;
+  var dark = currentTheme() !== "light";
+  btn.innerHTML = dark ? ICON_MOON : ICON_SUN;
+  btn.setAttribute("title", dark ? "Switch to light theme" : "Switch to dark theme");
+}
+paintThemeIcon();
+document.addEventListener("themechange", paintThemeIcon);
 
 const elSide = document.querySelector("#sideScroll");
 const $ = function (s) { return document.querySelector(s); };
@@ -17,7 +32,7 @@ const SIDE_VIEWS = {
   scm: '<div style="padding:10px 14px;font-family:var(--mono);font-size:12px;line-height:2;color:var(--tx2)">'
     + '<div style="color:var(--org)">M&nbsp;&nbsp;about.md</div>'
     + '<div style="color:var(--grn)">A&nbsp;&nbsp;projects/altus-ai.md</div>'
-    + '<div style="color:var(--grn)">A&nbsp;&nbsp;skills.js</div>'
+    + '<div style="color:var(--grn)">A&nbsp;&nbsp;skills.md</div>'
     + '<p style="margin-top:14px;font-family:var(--ui);font-size:12px;color:var(--tx3);line-height:1.7">'
     + '3 changes on <b style="color:var(--tx2)">main</b>. Last commit: '
     + '<i style="color:var(--str);font-style:normal">"ship altus ai streaming"</i></p></div>',
@@ -41,6 +56,7 @@ const SIDE_VIEWS = {
 document.querySelectorAll(".activity .ic").forEach(function(b){
   b.addEventListener("click", function(){
     var act = b.getAttribute("data-act");
+    if (act === "theme") { toggleTheme(); paintThemeIcon(); return; }
     if (act === "settings") { togglePal(true); return; }
     document.querySelectorAll(".activity .ic").forEach(function(x){ x.classList.remove("on"); });
     b.classList.add("on");

@@ -24,3 +24,69 @@ body{background:var(--editor);color:var(--tx);font-family:var(--ui);font-size:13
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:#3794ff;text-decoration:none}
 a:hover{text-decoration:underline}
+
+/* ---- light theme: token swap + the few hardcoded darks ---- */
+html[data-theme="light"]{
+  --editor:#ffffff; --side:#f3f3f3; --activity:#2c2c2c; --title:#dddddd;
+  --tab-a:#ffffff; --tab-i:#ececec; --panel:#f8f8f8;
+  --line:#d4d4d4; --line2:#e4e4e4;
+  --tx:#333333; --tx2:#616161; --tx3:#8c8c8c;
+  --hover:#e8e8e8; --sel:#add6ff;
+  --kw:#0000ff; --str:#a31515; --fn:#795e26; --num:#098658; --com:#008000;
+  --typ:#267f99; --prop:#0451a5; --op:#333333; --pur:#af00db; --warn:#bf8803;
+  --grn:#098658; --red:#cd3131; --org:#b58900;
+}
+html[data-theme="light"] ::-webkit-scrollbar-thumb{background:#c1c1c1}
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover{background:#a8a8a8}
+html[data-theme="light"] a{color:#0066b8}
+
+html[data-theme="light"] .titlebar{border-bottom-color:#cecece}
+html[data-theme="light"] .menu button:hover,
+html[data-theme="light"] .status button.s:hover{background:rgba(0,0,0,.08)}
+html[data-theme="light"] .activity{border-right-color:#1f1f1f}
+html[data-theme="light"] .sidebar{border-right-color:#e0e0e0}
+html[data-theme="light"] .fitem.active{background:#e4e6f1}
+html[data-theme="light"] .side-sect{border-top-color:#e0e0e0}
+
+html[data-theme="light"] .tabs{background:#f3f3f3;border-bottom-color:#e0e0e0}
+html[data-theme="light"] .tab{border-right-color:#e0e0e0}
+html[data-theme="light"] .tab.active{color:#333}
+html[data-theme="light"] .tab .x:hover{background:rgba(0,0,0,.1);color:#333}
+html[data-theme="light"] .minimap{border-left-color:#e0e0e0}
+html[data-theme="light"] .minimap div{background:#c7cdd6}
+html[data-theme="light"] .gutter{color:#a0a0a0}
+html[data-theme="light"] .gutter span.cur{color:#333}
+html[data-theme="light"] .var{color:var(--prop)}
+html[data-theme="light"] .md{color:#333}
+html[data-theme="light"] .md h1,
+html[data-theme="light"] .md h2,
+html[data-theme="light"] .md strong,
+html[data-theme="light"] .md .pcard .ph b{color:#111}
+html[data-theme="light"] .md h3{color:#222}
+html[data-theme="light"] .md p,
+html[data-theme="light"] .md li,
+html[data-theme="light"] .tbl td{color:#3c3c3c}
+html[data-theme="light"] .md code{background:#f0f0f0;color:#a31515}
+html[data-theme="light"] .md blockquote{background:#f5f5f5;color:#444}
+html[data-theme="light"] .md .kbd{background:#f0f0f0;border-color:#c8c8c8;color:#333}
+html[data-theme="light"] .pcard{background:#fafafa}
+html[data-theme="light"] .pcard .ph{background:#f0f0f0}
+html[data-theme="light"] .pcard .ph b{color:#111}
+html[data-theme="light"] .pcard .ph .badge{color:#0066b8}
+html[data-theme="light"] .pcard .tags span{background:#eee;border-color:#ddd}
+html[data-theme="light"] .viewtoggle:hover{color:#111;background:rgba(0,0,0,.1)}
+
+html[data-theme="light"] .ptabs{border-bottom-color:#e0e0e0}
+html[data-theme="light"] .ptabs button.on{color:#222;border-bottom-color:#222}
+html[data-theme="light"] .ptabs .right button:hover{background:rgba(0,0,0,.08);color:#111}
+html[data-theme="light"] .term{color:#333}
+html[data-theme="light"] .term .cmd,
+html[data-theme="light"] .tin{color:#111}
+html[data-theme="light"] .term .lnk,
+html[data-theme="light"] .term a{color:#0066b8}
+html[data-theme="light"] .caret{background:#333}
+
+html[data-theme="light"] .pal .box{background:#f3f3f3;border-color:#c8c8c8;box-shadow:0 10px 40px rgba(0,0,0,.2)}
+html[data-theme="light"] .pal input{background:#fff;color:#333}
+html[data-theme="light"] .toast{background:#f3f3f3;border-color:#c8c8c8}
+html[data-theme="light"] .toast b{color:#111}

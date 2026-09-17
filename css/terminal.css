@@ -1,6 +1,9 @@
 /* terminal — bottom panel */
 /* panel / terminal */
-.panel{height:280px;flex:0 0 auto;background:var(--panel);border-top:1px solid var(--line);display:flex;flex-direction:column}
+.panel{height:280px;flex:0 0 auto;background:var(--panel);border-top:1px solid var(--line);display:flex;flex-direction:column;position:relative;min-height:35px}
+.panel-grip{position:absolute;top:-3px;left:0;right:0;height:6px;cursor:ns-resize;z-index:5}
+.panel-grip:hover,body.panel-dragging .panel-grip{background:var(--kw)}
+body.panel-dragging{cursor:ns-resize;user-select:none}
 body.no-panel .panel{display:none}
 .ptabs{display:flex;align-items:center;gap:16px;padding:0 12px;height:35px;border-bottom:1px solid #232323;flex:0 0 auto}
 .ptabs button{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tx3);padding:9px 2px;border-bottom:1px solid transparent}
@@ -22,6 +25,9 @@ body.no-panel .panel{display:none}
 .term .lnk{color:#3794ff}
 .term a{color:#3794ff}
 .inline{display:flex;gap:0;align-items:baseline;flex-wrap:wrap}
-.tin{flex:1;min-width:60px;background:transparent;border:0;outline:0;font-family:var(--mono);font-size:12.5px;color:#fff;caret-color:transparent;padding:0}
+.tin{flex:0 0 auto;width:1ch;max-width:100%;background:transparent;border:0;outline:0;font-family:var(--mono);font-size:12.5px;color:#fff;caret-color:transparent;padding:0}
 .caret{display:inline-block;width:7.6px;height:15px;background:#cfcfcf;animation:bl 1.05s step-end infinite;transform:translateY(2px)}
 @keyframes bl{50%{opacity:0}}
+
+.nf{display:flex;gap:22px}
+.nf .nfcol{white-space:pre}

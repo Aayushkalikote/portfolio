@@ -111,133 +111,84 @@ export const FILES = {
     }
   },
 
-  "experience.json": {
-    icon: icon("#cbcb41", "{}"), lang: "JSON", path: "aayush-kalikote", mode: "code",
-    code: [
-      '<span class="op">{</span>',
-      '  <span class="prop">"title"</span><span class="op">:</span> <span class="str">"Software Engineer"</span><span class="op">,</span>',
-      '  <span class="prop">"focus"</span><span class="op">:</span> <span class="str">"PHP / Laravel / full-stack web"</span><span class="op">,</span>',
-      '',
-      '  <span class="prop">"experience"</span><span class="op">:</span> <span class="op">[</span>',
-      '    <span class="op">{</span>',
-      '      <span class="prop">"role"</span><span class="op">:</span>    <span class="str">"PHP Developer"</span><span class="op">,</span>',
-      '      <span class="prop">"company"</span><span class="op">:</span> <span class="str">"Codewing Solutions"</span><span class="op">,</span>',
-      '      <span class="prop">"period"</span><span class="op">:</span>  <span class="str">"March 2024 - Present"</span><span class="op">,</span>',
-      '      <span class="prop">"place"</span><span class="op">:</span>   <span class="str">"Kathmandu, Nepal"</span><span class="op">,</span>',
-      '      <span class="prop">"work"</span><span class="op">:</span> <span class="op">[</span>',
-      '        <span class="str">"Backend architecture on a booking platform people pay through"</span><span class="op">,</span>',
-      '        <span class="str">"REST APIs other teams and addons build against"</span><span class="op">,</span>',
-      '        <span class="str">"Payment gateways, and checkout that survives a bad one"</span><span class="op">,</span>',
-      '        <span class="str">"Altus AI, an LLM product layer, built solo"</span><span class="op">,</span>',
-      '        <span class="str">"Query and runtime performance once the data got big"</span>',
-      '      <span class="op">]</span>',
-      '    <span class="op">},</span>',
-      '    <span class="op">{</span>',
-      '      <span class="prop">"role"</span><span class="op">:</span>    <span class="str">"Intern"</span><span class="op">,</span>',
-      '      <span class="prop">"company"</span><span class="op">:</span> <span class="str">"TekGro"</span><span class="op">,</span>',
-      '      <span class="prop">"period"</span><span class="op">:</span>  <span class="str">"July 2023 - July 2024"</span><span class="op">,</span>',
-      '      <span class="prop">"place"</span><span class="op">:</span>   <span class="str">"Kathmandu, Nepal"</span><span class="op">,</span>',
-      '      <span class="prop">"work"</span><span class="op">:</span> <span class="op">[</span>',
-      '        <span class="str">"Full-stack work across a rotating set of client projects"</span><span class="op">,</span>',
-      '        <span class="str">"Where I first shipped code strangers actually used"</span>',
-      '      <span class="op">]</span>',
-      '    <span class="op">}</span>',
-      '  <span class="op">],</span>',
-      '',
-      '  <span class="prop">"education"</span><span class="op">:</span> <span class="op">{</span>',
-      '    <span class="prop">"degree"</span><span class="op">:</span>      <span class="str">"BSc.CSIT - Computer Science &amp; Information Technology"</span><span class="op">,</span>',
-      '    <span class="prop">"institution"</span><span class="op">:</span> <span class="str">"Texas International College"</span><span class="op">,</span>',
-      '    <span class="prop">"period"</span><span class="op">:</span>      <span class="str">"2021 - 2025"</span>',
-      '  <span class="op">},</span>',
-      '',
-      '  <span class="prop">"principles"</span><span class="op">:</span> <span class="op">[</span>',
-      '    <span class="str">"Code the next person can debug at 3am without me"</span><span class="op">,</span>',
-      '    <span class="str">"Ship small, check it at runtime, never guess"</span><span class="op">,</span>',
-      '    <span class="str">"The framework matters less than people think"</span>',
-      '  <span class="op">]</span>',
-      '<span class="op">}</span>'
-    ]
+  "experience.md": {
+    icon: icon("#519aba", "M\u2193"), lang: "Markdown", path: "aayush-kalikote", mode: "md",
+    render: function(){ return ''
+      + '<div class="md">'
+      +   '<h1>Experience</h1>'
+      +   '<p>Software Engineer — PHP / Laravel / full-stack web.</p>'
+      +   '<h2><span class="hash">##</span> PHP Developer — Codewing Solutions</h2>'
+      +   '<p style="color:var(--tx3)">March 2024 – Present · Kathmandu, Nepal</p>'
+      +   '<ul>'
+      +     '<li>Backend architecture on a booking platform people pay through</li>'
+      +     '<li>REST APIs other teams and addons build against</li>'
+      +     '<li>Payment gateways, and checkout that survives a bad one</li>'
+      +     '<li>Altus AI, an LLM product layer, built solo</li>'
+      +     '<li>Query and runtime performance once the data got big</li>'
+      +   '</ul>'
+      +   '<h2><span class="hash">##</span> Intern — TekGro</h2>'
+      +   '<p style="color:var(--tx3)">July 2023 – July 2024 · Kathmandu, Nepal</p>'
+      +   '<ul>'
+      +     '<li>Full-stack work across a rotating set of client projects</li>'
+      +     '<li>Where I first shipped code strangers actually used</li>'
+      +   '</ul>'
+      +   '<h2><span class="hash">##</span> Education</h2>'
+      +   '<p><strong>BSc.CSIT — Computer Science &amp; Information Technology</strong><br>'
+      +     'Texas International College · 2021 – 2025</p>'
+      +   '<h2><span class="hash">##</span> Principles</h2>'
+      +   '<ul>'
+      +     '<li>Code the next person can debug at 3am without me</li>'
+      +     '<li>Ship small, check it at runtime, never guess</li>'
+      +     '<li>The framework matters less than people think</li>'
+      +   '</ul>'
+      + '</div>';
+    }
   },
 
-  "skills.js": {
-    icon: icon("#cbcb41", "JS"), lang: "JavaScript", path: "aayush-kalikote", mode: "code",
-    code: [
-      '<span class="com">/**</span>',
-      '<span class="com"> * What I reach for without thinking about it.</span>',
-      '<span class="com"> * Roughly ordered by how much of my week it eats.</span>',
-      '<span class="com"> */</span>',
-      '<span class="kw">export const</span> <span class="var">stack</span> <span class="op">=</span> <span class="op">{</span>',
-      '  <span class="prop">languages</span><span class="op">:</span> <span class="op">[</span><span class="str">\'PHP\'</span><span class="op">,</span> <span class="str">\'JavaScript\'</span><span class="op">,</span> <span class="str">\'Python\'</span><span class="op">,</span> <span class="str">\'SQL\'</span><span class="op">],</span>',
-      '',
-      '  <span class="prop">backend</span><span class="op">:</span> <span class="op">[</span>',
-      '    <span class="str">\'Laravel\'</span><span class="op">,</span>          <span class="com">// primary application framework</span>',
-      '    <span class="str">\'Eloquent ORM\'</span><span class="op">,</span>',
-      '    <span class="str">\'REST API design\'</span><span class="op">,</span>',
-      '    <span class="str">\'MySQL\'</span><span class="op">,</span>',
-      '    <span class="str">\'Django\'</span><span class="op">,</span>',
-      '    <span class="str">\'WordPress / plugin architecture\'</span>',
-      '  <span class="op">],</span>',
-      '',
-      '  <span class="prop">frontend</span><span class="op">:</span> <span class="op">[</span><span class="str">\'Vue.js\'</span><span class="op">,</span> <span class="str">\'React\'</span><span class="op">,</span> <span class="str">\'Blade\'</span><span class="op">,</span> <span class="str">\'Tailwind\'</span><span class="op">,</span> <span class="str">\'CSS3\'</span><span class="op">],</span>',
-      '',
-      '  <span class="prop">ai</span><span class="op">:</span> <span class="op">[</span><span class="str">\'LLM Integration\'</span><span class="op">,</span> <span class="str">\'Prompt Design\'</span><span class="op">,</span> <span class="str">\'RAG\'</span><span class="op">,</span> <span class="str">\'Streaming\'</span><span class="op">,</span> <span class="str">\'Cost Control\'</span><span class="op">],</span>',
-      '',
-      '  <span class="prop">tooling</span><span class="op">:</span> <span class="op">[</span><span class="str">\'Git\'</span><span class="op">,</span> <span class="str">\'Composer\'</span><span class="op">,</span> <span class="str">\'PHPUnit\'</span><span class="op">,</span> <span class="str">\'PHPStan\'</span><span class="op">,</span> <span class="str">\'Docker\'</span><span class="op">,</span> <span class="str">\'Linux\'</span><span class="op">]</span>',
-      '<span class="op">};</span>',
-      '',
-      '<span class="com">// What I optimise for, in that order.</span>',
-      '<span class="kw">export const</span> <span class="var">priorities</span> <span class="op">=</span> <span class="op">[</span>',
-      '  <span class="str">\'Correctness\'</span><span class="op">,</span>',
-      '  <span class="str">\'Readability\'</span><span class="op">,</span>',
-      '  <span class="str">\'Maintainability\'</span><span class="op">,</span>',
-      '  <span class="str">\'Performance\'</span><span class="op">,</span>',
-      '  <span class="str">\'Cleverness\'</span>  <span class="com">// &lt;- dead last, and I mean it</span>',
-      '<span class="op">];</span>',
-      '',
-      '<span class="kw">export function</span> <span class="fn">canHelpWith</span><span class="op">(</span><span class="var">problem</span><span class="op">) {</span>',
-      '  <span class="kw">if</span> <span class="op">(</span><span class="var">problem</span><span class="op">.</span><span class="prop">isBackend</span> <span class="op">||</span> <span class="var">problem</span><span class="op">.</span><span class="prop">isAPI</span><span class="op">)</span> <span class="kw">return</span> <span class="num">true</span><span class="op">;</span>',
-      '  <span class="kw">if</span> <span class="op">(</span><span class="var">problem</span><span class="op">.</span><span class="prop">isAI</span> <span class="op">||</span> <span class="var">problem</span><span class="op">.</span><span class="prop">isInteresting</span><span class="op">)</span> <span class="kw">return</span> <span class="num">true</span><span class="op">;</span>',
-      '  <span class="kw">return</span> <span class="str">\'probably, ask me\'</span><span class="op">;</span>',
-      '<span class="op">}</span>'
-    ]
+  "skills.md": {
+    icon: icon("#519aba", "M\u2193"), lang: "Markdown", path: "aayush-kalikote", mode: "md",
+    render: function(){ return ''
+      + '<div class="md">'
+      +   '<h1>Skills</h1>'
+      +   '<p>What I reach for without thinking about it, roughly ordered by how much of my week it eats.</p>'
+      +   '<h2><span class="hash">##</span> Languages</h2><p>PHP · JavaScript · Python · SQL</p>'
+      +   '<h2><span class="hash">##</span> Backend</h2>'
+      +   '<ul>'
+      +     '<li>Laravel — primary application framework</li>'
+      +     '<li>Eloquent ORM</li><li>REST API design</li><li>MySQL</li><li>Django</li>'
+      +     '<li>WordPress / plugin architecture</li>'
+      +   '</ul>'
+      +   '<h2><span class="hash">##</span> Frontend</h2><p>Vue.js · React · Blade · Tailwind · CSS3</p>'
+      +   '<h2><span class="hash">##</span> AI</h2><p>LLM Integration · Prompt Design · RAG · Streaming · Cost Control</p>'
+      +   '<h2><span class="hash">##</span> Tooling</h2><p>Git · Composer · PHPUnit · PHPStan · Docker · Linux</p>'
+      +   '<h2><span class="hash">##</span> What I optimise for, in order</h2>'
+      +   '<ul><li>Correctness</li><li>Readability</li><li>Maintainability</li><li>Performance</li>'
+      +     '<li>Cleverness — dead last, and I mean it</li></ul>'
+      + '</div>';
+    }
   },
 
-  "contact.php": {
-    icon: icon("#a074c4", "&lt;?"), lang: "PHP", path: "aayush-kalikote", mode: "code",
-    code: [
-      '<span class="op">&lt;?</span><span class="kw">php</span>',
-      '<span class="com">/**</span>',
-      '<span class="com"> * The one endpoint worth hitting.</span>',
-      '<span class="com"> */</span>',
-      '<span class="kw">namespace</span> <span class="typ">Aayush</span><span class="op">;</span>',
-      '',
-      '<span class="kw">final class</span> <span class="typ">Contact</span> <span class="op">{</span>',
-      '',
-      '    <span class="kw">public const</span> <span class="var">EMAIL</span>    <span class="op">=</span> <span class="str">\'' + ME.email + '\'</span><span class="op">;</span>',
-      '    <span class="kw">public const</span> <span class="var">LINKEDIN</span> <span class="op">=</span> <span class="str">\'' + ME.linkedin + '\'</span><span class="op">;</span>',
-      '    <span class="kw">public const</span> <span class="var">GITHUB</span>   <span class="op">=</span> <span class="str">\'' + ME.github + '\'</span><span class="op">;</span>',
-      '    <span class="kw">public const</span> <span class="var">LOCATION</span> <span class="op">=</span> <span class="str">\'' + ME.location + '\'</span><span class="op">;</span>',
-      '    <span class="kw">public const</span> <span class="var">ROLE</span>     <span class="op">=</span> <span class="str">\'Software Engineer - PHP / Laravel\'</span><span class="op">;</span>',
-      '',
-      '    <span class="com">// I answer the same day, two at the worst.</span>',
-      '    <span class="kw">public function</span> <span class="fn">reply_time</span><span class="op">():</span> <span class="typ">string</span> <span class="op">{</span>',
-      '        <span class="kw">return</span> <span class="str">\'&lt; 24h\'</span><span class="op">;</span>',
-      '    <span class="op">}</span>',
-      '',
-      '    <span class="kw">public function</span> <span class="fn">open_to</span><span class="op">():</span> <span class="typ">array</span> <span class="op">{</span>',
-      '        <span class="kw">return</span> <span class="op">[</span>',
-      '            <span class="str">\'Backend and full-stack engineering roles\'</span><span class="op">,</span>',
-      '            <span class="str">\'PHP and Laravel application work\'</span><span class="op">,</span>',
-      '            <span class="str">\'LLM and AI integration work\'</span><span class="op">,</span>',
-      '            <span class="str">\'A genuinely interesting problem, generally\'</span><span class="op">,</span>',
-      '        <span class="op">];</span>',
-      '    <span class="op">}</span>',
-      '<span class="op">}</span>',
-      '',
-      '<span class="com">// Say hello:</span>',
-      '<span class="var">$me</span> <span class="op">=</span> <span class="kw">new</span> <span class="typ">Contact</span><span class="op">();</span>',
-      '<span class="fn">mail</span><span class="op">(</span><span class="typ">Contact</span><span class="op">::</span><span class="var">EMAIL</span><span class="op">,</span> <span class="str">\'Hello\'</span><span class="op">,</span> <span class="str">\'I have something worth building.\'</span><span class="op">);</span>'
-    ]
+  "contact.md": {
+    icon: icon("#519aba", "M\u2193"), lang: "Markdown", path: "aayush-kalikote", mode: "md",
+    render: function(){ return ''
+      + '<div class="md">'
+      +   '<h1>Contact</h1>'
+      +   '<p>Software Engineer — PHP / Laravel. Based in ' + ME.location + '. I reply in under 24 hours.</p>'
+      +   '<h2><span class="hash">##</span> Reach me</h2>'
+      +   '<ul>'
+      +     '<li><a href="mailto:' + ME.email + '">' + ME.email + '</a></li>'
+      +     '<li><a href="' + ME.linkedin + '" target="_blank" rel="noopener">LinkedIn</a></li>'
+      +     '<li><a href="' + ME.github + '" target="_blank" rel="noopener">GitHub</a></li>'
+      +   '</ul>'
+      +   '<h2><span class="hash">##</span> Open to</h2>'
+      +   '<ul>'
+      +     '<li>Backend and full-stack engineering roles</li>'
+      +     '<li>PHP and Laravel application work</li>'
+      +     '<li>LLM and AI integration work</li>'
+      +     '<li>A genuinely interesting problem, generally</li>'
+      +   '</ul>'
+      + '</div>';
+    }
   },
 
   "README.md": {
@@ -277,8 +228,8 @@ export const FILES = {
 };
 
 export const TREE = [
-  { type: "folder", name: "src", open: true, children: ["about.md", "skills.js", "contact.php"] },
+  { type: "folder", name: "src", open: true, children: ["about.md", "skills.md", "contact.md"] },
   { type: "folder", name: "projects", open: true, children: ["projects/wp-travel-engine.md"] },
-  { type: "file", name: "experience.json" },
+  { type: "file", name: "experience.md" },
   { type: "file", name: "README.md" }
 ];

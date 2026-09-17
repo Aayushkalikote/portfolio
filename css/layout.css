@@ -54,7 +54,10 @@ body.no-side .sidebar{display:none}
 .side-sect .hd{display:flex;align-items:center;gap:5px;padding:6px 8px;font-size:11px;text-transform:uppercase;
   letter-spacing:.08em;color:var(--tx2);cursor:pointer}
 .side-sect .bd{padding:2px 10px 12px 26px;font-size:12.5px;color:var(--tx2);line-height:1.9}
-.side-sect .bd a{display:block;color:var(--tx2)}
+.side-sect .bd a{display:flex;align-items:center;gap:8px;color:var(--tx2);min-width:0}
+.side-sect .bd a span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side-sect .bd .lico{width:14px;height:14px;flex:0 0 auto;opacity:.85}
+.side-sect .bd a:hover .lico{opacity:1}
 .side-sect .bd a:hover{color:var(--tx);text-decoration:none}
 
 /* main */

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>aayush-kalikote — Visual Studio Code</title>
 <meta name="description" content="Aayush Kalikote — Software Engineer. PHP, Laravel and full-stack web. Portfolio built as a VS Code workspace.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23007acc'/%3E%3Ctext x='16' y='22' font-size='16' font-family='monospace' font-weight='700' fill='white' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="assets/profile.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@
     <button class="ic" data-act="account" title="Accounts" aria-label="Accounts">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>
     </button>
-    <button class="ic" data-act="settings" title="Command Palette (Ctrl+Shift+P)" aria-label="Settings">
+    <button class="ic" data-act="theme" title="Toggle light/dark theme" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 7.5l2 1.2M17.5 15.3l2 1.2M4.5 16.5l2-1.2M17.5 8.7l2-1.2"/></svg>
     </button>
   </div>
@@ -82,6 +82,7 @@
       <div class="minimap" id="minimap"></div>
     </div>
     <div class="panel">
+      <div class="panel-grip" id="panelGrip" role="separator" aria-orientation="horizontal" title="Drag to resize"></div>
       <div class="ptabs">
         <button class="on">Terminal</button>
         <button id="pProblems">Problems <span style="color:var(--tx3)">0</span></button>
