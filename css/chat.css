@@ -83,6 +83,8 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; color: var(--tx2); }
 .icon:hover { background: var(--user); color: var(--tx); }
 .menu { display: none; }
+/* theme buttons show the theme you would switch to: sun in dark mode, moon in light */
+[data-theme="dark"] .ico-moon, :root:not([data-theme="dark"]) .ico-sun { display: none; }
 .gh { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 13.5px; color: var(--tx2); }
 .gh:hover { color: var(--tx); border-color: var(--tx3); }
 .gh svg { width: 14px; height: 14px; }

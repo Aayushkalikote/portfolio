@@ -277,7 +277,7 @@ const ALTUS_HITS = [site("Altus AI – AI for travel websites", "https://wptrave
 const REPLIES = {
   about: () => ({
     steps: [read("profile.js", "name, role, location, links"), run("git log --oneline | wc -l", YEARS + "+ years of commits")],
-    text: "Aayush Kalikote is a software engineer in " + ME.location + ". He writes PHP and Laravel for a living, mostly the parts other systems end up depending on. At Codewing Solutions he works on WP Travel Engine, travel-booking software real people pay through, and on Altus AI, the LLM layer built on top of it.",
+    text: "Aayush Kalikote is a software Engineer in " + ME.location + ". He writes PHP and Laravel for a living, mostly the parts other systems end up depending on. At Codewing Solutions he works on WP Travel Engine, travel-booking software real people pay through, and on Altus AI, the LLM layer built on top of it.",
     html: profileBlock(),
     followUps: ["What is he working on now?", "Show me his projects", "How do I reach him?"]
   }),
