@@ -8,6 +8,7 @@ export const ME = {
   location: "Kathmandu, Nepal",
   linkedin: "https://www.linkedin.com/in/aayush-kalikote-b75bab246/",
   github: "https://github.com/Aayushkalikote",
+  wporg: "https://profiles.wordpress.org/aayushk777/",
   photo: "assets/profile.jpg",
   photoFallback: "assets/profile.svg"
 };

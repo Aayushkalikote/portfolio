@@ -20,6 +20,9 @@ const cases = {
   "Tell me about DropBridge": "dropbridge",
   "any open source projects?": "dropbridge",
   "what's his github": "contact",
+  "Tell me about Transtrix": "transtrix",
+  "can he migrate a wordpress site": "transtrix",
+  "what's his wordpress org profile": "contact",
   "/nope": "help"
 };
 for (const [q, want] of Object.entries(cases)) assert.equal(classify(q), want, q);

@@ -89,6 +89,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .gh:hover { color: var(--tx); border-color: var(--tx3); }
 .gh svg { width: 14px; height: 14px; }
 .gh svg.mark { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+.gh svg.wp { width: 16px; height: 16px; }
 
 /* ---------- empty state ---------- */
 

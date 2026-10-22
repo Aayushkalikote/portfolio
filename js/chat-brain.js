@@ -27,9 +27,10 @@ export const SUGGESTIONS = [
 // Specific topics are scored first; ties go to the earlier entry.
 const SPECIFIC = [
   ["altus",      ["altus", "ai", "llm", "rag", "gpt", "chatbot", "prompt", "openai"]],
+  ["transtrix",  ["transtrix", "migration", "migrate", "migrating", "import", "export", "backup", "restore", "move a site", "wp cli"]],
   ["wpte",       ["wp travel engine", "travel engine", "wpte", "wordpress", "booking", "plugin", "payment", "payments"]],
   ["dropbridge", ["dropbridge", "drop bridge", "airdrop", "quick share", "quickshare", "open source", "opensource", "oss", "rust", "side project", "side projects", "personal project", "personal projects", "android", "mac", "macos", "homebrew", "brew"]],
-  ["contact",    ["contact", "email", "mail", "reach", "linkedin", "github", "touch", "connect", "message", "phone", "call"]],
+  ["contact",    ["contact", "email", "mail", "reach", "linkedin", "github", "wordpress org", "profile", "touch", "connect", "message", "phone", "call"]],
   ["hire",       ["hire", "hiring", "why", "pitch", "fit", "recruit", "available", "availability", "open to", "opportunities", "role", "roles"]],
   ["education",  ["education", "study", "studied", "college", "degree", "university", "csit", "bsc", "student", "school"]],
   ["experience", ["experience", "career", "history", "worked", "companies", "company", "resume", "cv", "tekgro", "intern", "internship", "years"]],
@@ -66,6 +67,7 @@ export function classify(text) {
 
 const WPORG = "https://wordpress.org/plugins/wp-travel-engine/";
 const REPO = "https://github.com/Aayushkalikote/DropBridge";
+const TRANSTRIX = "https://wordpress.org/plugins/transtrix/";
 
 const PROJECTS = [
   {
@@ -115,9 +117,27 @@ const PROJECTS = [
       "<code>dropbridge doctor</code> checks Wi-Fi, AirDrop and the service, and lists the phones it sees"
     ],
     tags: ["Rust", "macOS", "Android", "AirDrop", "Quick Share", "Homebrew"]
+  },
+  {
+    id: "transtrix", name: "Transtrix", tagline: "Site migration, import & export for WordPress", badge: "WordPress.org plugin",
+    icon: "assets/transtrix-icon.svg", cover: "assets/transtrix-banner.png",
+    kind: "oss", url: TRANSTRIX,
+    links: [["View on WordPress.org", TRANSTRIX], ["His WordPress.org profile", ME.wporg, true]],
+    install: "wp plugin install transtrix --activate",
+    metrics: [["2", "ways to move a site"], ["30 days", "of undo by default"], ["0", "outside requests"]],
+    blurb: "Transtrix moves a WordPress site two ways: the whole site as one package restored on a new host or domain, or just the content you pick, with its images, categories and links. His own plugin, published on WordPress.org.",
+    pointsLabel: "What it does",
+    points: [
+      "Packs database, uploads, themes and plugins into one file, and rewrites links on restore, including ones saved in settings",
+      "Checks PHP, WordPress, multisite and disk space before a restore touches anything",
+      "Moves posts, pages, media, WP Travel Engine trips and WooCommerce products, with a preview before writing",
+      "Restore points for undo, WP-CLI commands with no request time limit, and a <code>transtrix_register_modules</code> hook"
+    ],
+    tags: ["PHP", "WordPress", "WP-CLI", "WooCommerce", "WP Travel Engine", "Migrations"]
   }
 ];
 const WORK = PROJECTS.filter(p => p.kind === "work");
+const OSS = PROJECTS.filter(p => p.kind === "oss");
 
 const STACK = [
   ["Languages", ["PHP", "JavaScript", "Python", "SQL", "Rust"]],
@@ -153,9 +173,10 @@ function profileBlock() {
     + '<div class="socials">'
     + '<a href="' + ME.github + '" ' + ext + ' aria-label="GitHub">' + svg("github") + "</a>"
     + '<a href="' + ME.linkedin + '" ' + ext + ' aria-label="LinkedIn">' + svg("linkedin") + "</a>"
+    + '<a href="' + ME.wporg + '" ' + ext + ' aria-label="WordPress.org">' + svg("wordpress") + "</a>"
     + '<a href="mailto:' + ME.email + '" aria-label="Email">' + svg("mail") + "</a></div></div>"
     + '<div class="pmeta"><span class="status"><i class="dot"></i>Open to opportunities</span><span>' + svg("pin") + ME.location + "</span></div>"
-    + metrics([[YEARS + "+", "years shipping"], [WORK.length, "products in production"], [PROJECTS.length - WORK.length, "open-source project"]])
+    + metrics([[YEARS + "+", "years shipping"], [WORK.length, "products in production"], [OSS.length, "open-source projects"]])
     + "</div>";
 }
 
@@ -166,7 +187,7 @@ function projectRows() {
     + '<span class="badge">' + p.badge + "</span>" + svg("arrow") + "</button>";
   const group = (label, list) => '<span class="rgroup">' + label + "</span>" + list.map(row).join("");
   return '<div class="card rows">' + group("At Codewing Solutions", WORK)
-    + group("Open source", PROJECTS.filter(p => p.kind === "oss")) + "</div>";
+    + group("Open source", OSS) + "</div>";
 }
 
 function installBlock(cmd) {
@@ -197,16 +218,17 @@ function nowBlock() {
     ["fix", "checkout", "Keeping checkout honest when a payment gateway times out"],
     ["feat", "api", "The REST layer, plus the React admin sitting on it"],
     ["chore", "migrate", "Migrations that land on thousands of live sites unnoticed"],
-    ["feat", "altus", "Altus AI, the LLM layer on top of it all"]
+    ["feat", "altus", "Altus AI, the LLM layer on top of it all"],
+    ["feat", "transtrix", "Transtrix, his own site-migration plugin on WordPress.org"]
   ];
   return '<div class="card nowcard">'
     + '<div class="nowhead"><span class="live"><i class="pulse"></i>On the clock</span>'
     + '<span class="tenure">since Mar 2024 · ' + tenure + "</span></div>"
     + '<div class="nowrole"><b>PHP Developer</b> <span>@ Codewing Solutions</span></div>'
-    + '<div class="prods">' + WORK.map(p =>
+    + '<div class="prods">' + WORK.concat(PROJECTS[3]).map(p =>
         '<button class="prod" data-ask="Tell me about ' + p.name + '"><img src="' + p.icon + '" alt="">' + p.name + svg("arrow") + "</button>").join("")
     + "</div></div>"
-    + '<div class="card term"><div class="tbar"><i></i><i></i><i></i><span>~/codewing — git log --oneline --since=monday</span></div>'
+    + '<div class="card term"><div class="tbar"><i></i><i></i><i></i><span>~/work — git log --oneline --since=monday</span></div>'
     + '<div class="tbody">' + log.map(([type, scope, desc], i) =>
         '<div class="tline" style="--i:' + i + '"><span class="tt ' + type + '">' + type + "(" + scope + ')</span><span class="td">' + desc + "</span></div>").join("")
     + '<div class="tline" style="--i:' + log.length + '"><span class="tt prompt">$</span><span class="caret"></span></div>'
@@ -251,6 +273,7 @@ function contactBlock() {
     + row("mail", "Email", ME.email, "mailto:" + ME.email, ME.email)
     + row("linkedin", "LinkedIn", "aayush-kalikote", ME.linkedin)
     + row("github", "GitHub", "Aayushkalikote", ME.github)
+    + row("wordpress", "WordPress.org", "aayushk777", ME.wporg)
     + "</div>"
     + '<div class="pmeta"><span class="status"><i class="dot"></i>Replies within 24h</span><span>' + svg("pin") + ME.location + "</span></div>";
 }
@@ -283,15 +306,15 @@ const REPLIES = {
   }),
   now: () => ({
     steps: [read("experience.md", "current: Codewing Solutions, since Mar 2024"), run('ls ~/projects --status=live', "2 products live in production")],
-    text: "Since March 2024 he has been a PHP Developer at Codewing Solutions, working on WP Travel Engine and Altus AI. Most weeks look like this:",
+    text: "Since March 2024 he has been a PHP Developer at Codewing Solutions, working on WP Travel Engine and Altus AI. On his own time he builds Transtrix, a site-migration plugin on WordPress.org. Most weeks look like this:",
     html: nowBlock(),
-    followUps: ["Tell me about Altus AI", "What's his stack?", "Why should we hire him?"]
+    followUps: ["Tell me about Transtrix", "Tell me about Altus AI", "Why should we hire him?"]
   }),
   projects: () => ({
-    steps: [run("ls ~/projects --group-by=kind", "3 projects found: 2 at work, 1 open source.")],
-    text: "Two products he works on at Codewing Solutions, both live in production, plus DropBridge, his own open-source tool. The work side is travel booking: data models, APIs, payments and performance. The side project is Rust, bridging AirDrop and Android's Quick Share.",
-    html: projectRows() + actions([link("WP Travel Engine on WordPress.org", WPORG), link("DropBridge on GitHub", REPO, true)]),
-    followUps: ["Tell me about WP Travel Engine", "Tell me about DropBridge", "What's his stack?"]
+    steps: [run("ls ~/projects --group-by=kind", "4 projects found: 2 at work, 2 open source.")],
+    text: "Two products he works on at Codewing Solutions, both live in production, plus two of his own open-source projects. The work side is travel booking: data models, APIs, payments and performance. On his own he built DropBridge, a Rust bridge between AirDrop and Android's Quick Share, and Transtrix, a WordPress migration plugin on WordPress.org.",
+    html: projectRows() + actions([link("WP Travel Engine on WordPress.org", WPORG), link("DropBridge on GitHub", REPO, true), link("Transtrix on WordPress.org", TRANSTRIX, true)]),
+    followUps: ["Tell me about WP Travel Engine", "Tell me about DropBridge", "Tell me about Transtrix"]
   }),
   wpte: () => ({
     steps: [search("wp travel engine site:wordpress.org", WPTE_HITS), read("projects/wp-travel-engine.md")],
@@ -310,7 +333,15 @@ const REPLIES = {
             run("brew info aayushkalikote/tap/dropbridge", "dropbridge: AirDrop ↔ Quick Share bridge · GPL-3.0")],
     text: "DropBridge is his personal open-source project: it lets a Mac and an Android phone send files to each other with the screens people already know, AirDrop on the Mac and Quick Share on the phone.",
     html: projectDetail(PROJECTS[2]),
-    followUps: ["Show me his projects", "What's his stack?", "How do I reach him?"]
+    followUps: ["Tell me about Transtrix", "What's his stack?", "How do I reach him?"]
+  }),
+  transtrix: () => ({
+    steps: [search("transtrix site:wordpress.org", [site("Transtrix – Site Migration, Import & Export", TRANSTRIX, "assets/transtrix-icon.svg"),
+                                                   site("aayushk777 – WordPress.org profile", ME.wporg, "assets/transtrix-icon.svg")]),
+            run("wp plugin search transtrix --fields=name,author", "Transtrix · Aayush Kalikote")],
+    text: "Transtrix is his own WordPress plugin on WordPress.org: it moves a whole site to a new host or domain, or carries selected content between sites, with a preview first and an undo after.",
+    html: projectDetail(PROJECTS[3]),
+    followUps: ["Show me his projects", "Tell me about WP Travel Engine", "How do I reach him?"]
   }),
   experience: () => ({
     steps: [run("git log --career --graph", CAREER.length + " commits on main")],
@@ -337,7 +368,7 @@ const REPLIES = {
     followUps: ["How do I reach him?", "Show me his projects"]
   }),
   contact: () => ({
-    steps: [read("profile.js", "3 channels found")],
+    steps: [read("profile.js", "4 channels found")],
     text: "Email is fastest. He usually replies the same day, always within two.",
     html: contactBlock(),
     followUps: ["Why should we hire him?", "Who is Aayush?"]

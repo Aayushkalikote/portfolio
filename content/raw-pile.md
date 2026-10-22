@@ -6,7 +6,7 @@ Read-only. Source of truth for the shaping session. Fragments, not an article.
 - Aayush Kalikote. Software Engineer. PHP · Laravel · Full-Stack Web.
 - Kathmandu, Nepal.
 - aayushkalikote37@gmail.com
-- linkedin.com/in/aayush-kalikote-b75bab246/ · github.com/Aayushkalikote
+- linkedin.com/in/aayush-kalikote-b75bab246/ · github.com/Aayushkalikote · profiles.wordpress.org/aayushk777
 - Chip on hero: "Open to opportunities".
 - Reply time: usually same day, always within two. `< 24h`.
 - Open to: backend / full-stack engineering roles; Laravel and PHP application work; AI integration work; interesting problems, generally.
